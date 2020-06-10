@@ -1,5 +1,7 @@
 package com.outside.theconnect.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -7,8 +9,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+@Builder
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "user_info")
 @Entity
 public class UserInfo implements Serializable {
@@ -28,6 +32,6 @@ public class UserInfo implements Serializable {
     private String avatar;
     @Lob
     private String introduce;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Address address;
 }

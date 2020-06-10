@@ -1,25 +1,24 @@
 package com.outside.theconnect.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+@Builder
 @Data
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+@AllArgsConstructor
+@Entity
+@ToString
 @Table(name = "user")
-public abstract class User implements Serializable {
+public class User implements Serializable {
     @Id
     @Column(name = "email")
     private String email;
@@ -36,16 +35,14 @@ public abstract class User implements Serializable {
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    private Instant updatedAt;
+    private Date updatedAt;
 
     @Column(name = "deleted_at")
-    private Instant deletedAt;
+    private Date deletedAt;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private UserInfo userInfo;
 
     @OneToMany(mappedBy = "user")
     private Set<Post> posts = new HashSet<>();
-
-
 }
