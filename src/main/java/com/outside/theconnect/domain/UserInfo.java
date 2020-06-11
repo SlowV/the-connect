@@ -1,14 +1,18 @@
 package com.outside.theconnect.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+
+@Builder
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "user_info")
 @Entity
 public class UserInfo implements Serializable {
@@ -19,7 +23,7 @@ public class UserInfo implements Serializable {
     @JoinColumn(unique = true)
     @OneToOne
     private User user;
-
+    private int age;
     private String firstName;
     private String lastName;
     private int gender;
@@ -28,6 +32,6 @@ public class UserInfo implements Serializable {
     private Image avatar;
     @Lob
     private String introduce;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Address address;
 }
