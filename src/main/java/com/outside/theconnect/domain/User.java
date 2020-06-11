@@ -33,11 +33,8 @@ public abstract class User implements Serializable {
     @CreationTimestamp
     @Column(name = "created_at")
     private Instant createdAt;
-
-    @UpdateTimestamp
     @Column(name = "updated_at")
     private Instant updatedAt;
-
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
@@ -46,6 +43,7 @@ public abstract class User implements Serializable {
 
     @OneToMany(mappedBy = "user")
     private Set<Post> posts = new HashSet<>();
-
+    @OneToMany(mappedBy = "user")
+    private Set<Image> images = new HashSet<>();
 
 }

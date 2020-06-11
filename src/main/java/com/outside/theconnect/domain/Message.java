@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,5 +24,7 @@ public class Message implements Serializable {
     private User receiver;
 
     @OneToMany(mappedBy = "message")
-    private Set<Chat> chats;
+    private List<Chat> chats;
+    @OneToMany(mappedBy = "message")
+    private List<Image> listImages;
 }

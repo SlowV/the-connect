@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
+import java.util.List;
 @Data
 @NoArgsConstructor
 @Table(name = "user_info")
@@ -23,9 +23,9 @@ public class UserInfo implements Serializable {
     private String firstName;
     private String lastName;
     private int gender;
-    private int age;
     private Date dob;
-    private String avatar;
+    @OneToOne
+    private Image avatar;
     @Lob
     private String introduce;
     @OneToOne
