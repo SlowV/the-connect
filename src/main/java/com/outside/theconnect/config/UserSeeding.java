@@ -28,41 +28,41 @@ public class UserSeeding implements ApplicationListener<ApplicationReadyEvent> {
     }
 
     private void seedingUser() {
-//        if (userRepository.findAll().size() <= 0) {
-//            LOGGER.info("Start seeding...");
-//            userRepository.disableForeignKeyCheck();
-//            userRepository.resetIncrement();
-//            User user = User.builder().email("admin@gmail.com")
-//                    .password(passwordEncoder.encode("admin"))
-//                    .status(1).build();
-//            UserInfo userInfo = UserInfo.builder()
-//                    .age(20)
-//                    .dob(new Date(1998, 02, 27))
-//                    .avatar(Image.builder()
-//                            .url("https://thuthuatnhanh.com/wp-content/uploads/2019/05/gai-xinh-toc-ngan-facebook.jpg")
-//                            .build())
-//                    .gender(1)
-//                    .firstName("Viet")
-//                    .lastName("Trinh")
-//                    .introduce("Dep trai")
-//                    .user(user)
-//                    .address(Address.builder()
-//                            .location("252 phuc dien")
-//                            .district(District.builder()
-//                                    .name("Xuan Phuong")
-//                                    .province(Province.builder()
-//                                            .name("Ha Noi")
-//                                            .country(Country.builder()
-//                                                    .name("Viet Nam")
-//                                                    .build())
-//                                            .build())
-//                                    .build())
-//                            .build())
-//                    .build();
-//            user.setUserInfo(userInfo);
-//            userRepository.save(user);
-//            userRepository.enableForeignKeyCheck();
-//            LOGGER.info("Seeding success!");
-//        }
+        if (userRepository.findAll().size() <= 0) {
+            LOGGER.info("Start seeding...");
+            userRepository.disableForeignKeyCheck();
+            userRepository.resetIncrement();
+            User user = User.builder().email("admin@gmail.com")
+                    .password(passwordEncoder.encode("admin"))
+                    .status(1).build();
+            UserInfo userInfo = UserInfo.builder()
+                    .age(20)
+                    .dob(new Date(1998, 02, 27))
+                    .avatar(Image.builder()
+                            .url("https://thuthuatnhanh.com/wp-content/uploads/2019/05/gai-xinh-toc-ngan-facebook.jpg")
+                            .build())
+                    .gender(1)
+                    .firstName("Viet")
+                    .lastName("Trinh")
+                    .introduce("Dep trai")
+                    .user(user)
+                    .address(Address.builder()
+                            .location("252 phuc dien")
+                            .district(District.builder()
+                                    .name("Xuan Phuong")
+                                    .province(Province.builder()
+                                            .name("Ha Noi")
+                                            .country(Country.builder()
+                                                    .name("Viet Nam")
+                                                    .build())
+                                            .build())
+                                    .build())
+                            .build())
+                    .build();
+            user.setUserInfo(userInfo);
+            userRepository.save(user);
+            userRepository.enableForeignKeyCheck();
+            LOGGER.info("Seeding success!");
+        }
     }
 }

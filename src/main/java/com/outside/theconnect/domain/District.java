@@ -16,6 +16,7 @@ import java.util.List;
 @Builder
 public class District implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 //    public enum DistrictType{

@@ -28,7 +28,7 @@ public class UserInfo implements Serializable {
     private String lastName;
     private int gender;
     private Date dob;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Image avatar;
     @Lob
     private String introduce;

@@ -8,13 +8,11 @@
 <div>TK:admin@gmail.com</div>
 <div>MK:admin</div>
 <form th:action="@{/auth/login}" method="post">
-    <label>Tai khoan</label>
-    <input type="email" name="email">
-    <br>
-    <label>Mat khau</label>
-    <input type="password" name="password">
-    <br>
-    <input type="submit" value="Dang nhap">
+    <div class="uk-margin">
+        <label for="user-name-label"> User name
+            <input class="uk-input uk-form-width-large" type="text" placeholder="User name" id="user-name-label">
+        </label>
+    </div>
 </form>
 </body>
 </html>
