@@ -1,5 +1,6 @@
 package com.outside.theconnect.domain;
 
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -8,6 +9,7 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
+@Builder
 @Data
 @Entity
 @Table(name = "images")
