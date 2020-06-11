@@ -7,7 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
-
+import java.util.List;
 @Data
 @Entity
 @Table(name = "post")
@@ -28,4 +28,10 @@ public class Post implements Serializable {
     private int status;
     @ManyToOne
     private Post post;
+    @OneToMany(mappedBy = "post")
+    private List<Image> listImg;
+    @ManyToOne
+    private GroupPost groupPost;
+    @OneToOne
+    private Authorization authorization;
 }

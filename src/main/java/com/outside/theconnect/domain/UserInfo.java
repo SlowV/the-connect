@@ -23,13 +23,13 @@ public class UserInfo implements Serializable {
     @JoinColumn(unique = true)
     @OneToOne
     private User user;
-
+    private int age;
     private String firstName;
     private String lastName;
     private int gender;
-    private int age;
     private Date dob;
-    private String avatar;
+    @OneToOne
+    private Image avatar;
     @Lob
     private String introduce;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

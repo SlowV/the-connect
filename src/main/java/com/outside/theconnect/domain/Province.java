@@ -7,28 +7,28 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
+@Builder
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class District implements Serializable {
+@Entity
+public class Province implements Serializable {
     @Id
     private Long id;
     private String name;
-//    public enum DistrictType{
-//       HUYEN(0),QUAN(1),THANH_PHO_TT_TINH(2);
+    @OneToMany(mappedBy = "province")
+    private Set<District> districts;
+//    public enum ProvinceType{
+//        TINH(0),THANH_PHO_TRUNG_UONG(1);
 //        private int value;
 //
-//        DistrictType(int value) {
+//        ProvinceType(int value) {
 //            this.value = value;
 //        }
 //    }
     private String type;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Province province;
-    @OneToMany(mappedBy = "district")
-    private List<Commune> commune;
+    @ManyToOne
+    private Country country;
 }

@@ -32,17 +32,15 @@ public class User implements Serializable {
     @CreationTimestamp
     @Column(name = "created_at")
     private Instant createdAt;
-
-    @UpdateTimestamp
     @Column(name = "updated_at")
-    private Date updatedAt;
-
+    private Instant updatedAt;
     @Column(name = "deleted_at")
-    private Date deletedAt;
-
+    private Instant deletedAt;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private UserInfo userInfo;
 
     @OneToMany(mappedBy = "user")
     private Set<Post> posts = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private Set<Image> images = new HashSet<>();
 }
