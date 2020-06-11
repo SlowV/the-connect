@@ -16,7 +16,9 @@ import java.util.Set;
 @Entity
 public class Province implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     @OneToMany(mappedBy = "province")
     private Set<District> districts;
@@ -29,6 +31,7 @@ public class Province implements Serializable {
 //        }
 //    }
     private String type;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private Country country;
 }
