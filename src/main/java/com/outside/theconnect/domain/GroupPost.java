@@ -1,32 +1,28 @@
 package com.outside.theconnect.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "group_message")
-public class GroupMessage implements Serializable {
+@Table(name = "group_post")
+public class GroupPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private Group group;
-    @Lob
-    private String content;
+    @OneToMany(mappedBy = "groupPost")
+    private Set<Post> post = new HashSet<>();
     @ManyToOne
-    private User sender;
+    private User uploader;
     @CreationTimestamp
     private Instant createdAt;
+    @OneToOne
+    private Authorization authorization;
 }

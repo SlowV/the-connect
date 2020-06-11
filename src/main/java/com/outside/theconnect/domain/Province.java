@@ -4,26 +4,25 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
-public class District implements Serializable {
+public class Province implements Serializable {
     @Id
     private Long id;
     private String name;
-//    public enum DistrictType{
-//       HUYEN(0),QUAN(1),THANH_PHO_TT_TINH(2);
+    @OneToMany(mappedBy = "province")
+    private Set<District> districts;
+//    public enum ProvinceType{
+//        TINH(0),THANH_PHO_TRUNG_UONG(1);
 //        private int value;
 //
-//        DistrictType(int value) {
+//        ProvinceType(int value) {
 //            this.value = value;
 //        }
 //    }
     private String type;
     @ManyToOne
-    private Province province;
-    @OneToMany(mappedBy = "district")
-    private List<Commune> commune;
-
+    private Country country;
 }

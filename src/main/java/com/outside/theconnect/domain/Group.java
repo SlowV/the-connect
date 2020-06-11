@@ -9,6 +9,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -29,4 +31,10 @@ public class Group implements Serializable {
     private Instant deletedAt;
     @ManyToOne
     private User creator;
+    @OneToOne(mappedBy = "group")
+    private Image groupAvatar;
+    @OneToMany(mappedBy = "group")
+    private Set<GroupMessage> groupMessage = new HashSet<>();
+    @OneToMany(mappedBy = "group")
+    private Set<GroupPost> groupPosts = new HashSet<>();
 }

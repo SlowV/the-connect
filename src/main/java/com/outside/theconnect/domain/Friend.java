@@ -16,5 +16,13 @@ import java.io.Serializable;
 public class Friend implements Serializable {
     @EmbeddedId
     private FriendId id;
+    public enum FriendType{
+        IsFriend(1),Following(2),Blocked(3);
+        private int value;
+
+        FriendType(int value) {
+            this.value = value;
+        }
+    }
     private int type;
 }

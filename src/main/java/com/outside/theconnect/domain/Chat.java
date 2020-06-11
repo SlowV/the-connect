@@ -5,12 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -18,6 +17,7 @@ import java.time.Instant;
 @NoArgsConstructor
 public class Chat implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Lob
     private String content;
@@ -26,4 +26,6 @@ public class Chat implements Serializable {
     private Instant timeRead;
     @ManyToOne
     private Message message;
+    @OneToMany(mappedBy = "chats")
+    private Set<Image> images = new HashSet<>();
 }

@@ -16,5 +16,13 @@ import java.io.Serializable;
 public class Like implements Serializable {
     @EmbeddedId
     private LikeId id;
+    public enum LikeType{
+        LIKE(0),LOVE(1),HAHA(2),SAD(3),ANGRY(4);
+        private int value;
+
+        LikeType(int value) {
+            this.value = value;
+        }
+    }
     private int type;
 }

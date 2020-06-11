@@ -15,5 +15,5 @@ public class Country implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "country")
-    private Set<City> cities;
+    private Set<Province> cities;
 }
