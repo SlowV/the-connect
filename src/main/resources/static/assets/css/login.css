@@ -1,0 +1,30 @@
+.login-background {
+    background-image: url('../images/connect.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login-grid {
+    margin-left: 0; !important;
+}
+
+.logo-slogan {
+    left: 13%;
+}
+
+.logo-slogan .logo {
+    position: absolute;
+    margin: 7% auto auto;
+    left: 25%;
+}
+
+.login-form {
+    padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .logo {
+        max-width: 50%;
+        height: auto;
+    }
+}
