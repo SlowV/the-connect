@@ -14,7 +14,7 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "groups")
+@Table(name = "groupss")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Group implements Serializable {
